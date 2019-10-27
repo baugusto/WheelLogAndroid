@@ -25,6 +25,20 @@ public class SettingsUtil {
         editor.putString("last_mac", address);
         editor.apply();
     }
+	
+	public static void setUserDistance(Context context, String id, long distance) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(key, Context.MODE_PRIVATE).edit();
+        editor.putLong("user_distance_"+id, distance);
+        editor.apply();
+    }
+	
+	public static long getUserDistance(Context context, String id) {
+        SharedPreferences pref = context.getSharedPreferences(key, Context.MODE_PRIVATE);
+        if (pref.contains("user_distance_"+id)) {
+            return pref.getLong("user_distance_"+id, 0);
+        }
+        return 0;
+    }
 
     public static boolean isFirstRun(Context context) {
         SharedPreferences pref = context.getSharedPreferences(key, Context.MODE_PRIVATE);
@@ -76,12 +90,24 @@ public class SettingsUtil {
         return getSharedPreferences(context).getBoolean(context.getString(R.string.use_mph), false);
     }
 
+    public static boolean isUsePipMode(Context context) {
+        return getSharedPreferences(context).getBoolean(context.getString(R.string.use_pip_mode), false);
+    }
+
+    public static boolean isUseENG(Context context) {
+        return getSharedPreferences(context).getBoolean(context.getString(R.string.use_eng), false);
+    }
+
     public static int getMaxSpeed(Context context) {
         return getSharedPreferences(context).getInt(context.getString(R.string.max_speed), 30);
     }
 
     public static int getHornMode(Context context) {
         return Integer.parseInt(getSharedPreferences(context).getString(context.getString(R.string.horn_mode), "0"));
+    }
+
+    public static boolean getGarminConnectIQEnable(Context context) {
+        return getSharedPreferences(context).getBoolean(context.getString(R.string.garmin_connectiq_enable), false);
     }
 
     //Inmotion Specific, but can be the same for other wheels

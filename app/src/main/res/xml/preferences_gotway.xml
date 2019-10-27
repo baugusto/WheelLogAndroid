@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sample="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        android:key="@string/light_mode"
+        android:title="@string/light_mode_title"
+        android:defaultValue="0"
+		android:enabled="true"
+        android:entries="@array/light_mode_gw"
+        android:entryValues="@array/light_mode_values"
+        android:summary="@string/on_off_strobe" />
+			
+			
+    <ListPreference
+        android:key="@string/alarm_mode"
+        android:title="@string/alarm_mode_title"
+        android:defaultValue="0"
+		android:enabled="true"
+        android:entries="@array/alarm_mode_gw"
+        android:entryValues="@array/alarm_mode_values"
+        android:summary="@string/alarm_settings_title" />
+	
+    <ListPreference
+        android:key="@string/pedals_mode"
+        android:title="@string/pedals_mode_title"
+        android:defaultValue="1"
+        android:entries="@array/pedals_mode"
+        android:entryValues="@array/pedals_mode_values"
+        android:summary="@string/soft_medium_hard" />
+
+
+    <com.pavelsikun.seekbarpreference.SeekBarPreference
+        android:key="@string/wheel_max_speed"
+        android:title="@string/max_speed_title"
+        android:summary="@string/tilt_back_description"
+        android:defaultValue="30"
+		android:enabled="true"
+        sample:msbp_minValue="0"
+        sample:msbp_maxValue="48"
+        sample:msbp_interval="3"
+        sample:msbp_measurementUnit="@string/kmh"
+        sample:msbp_dialogEnabled="true"/>
+
+		
+	<Preference
+        android:key="@string/start_calibration"
+		android:enabled="true"
+        android:title="@string/calibration_title"/>
+		
+	<CheckBoxPreference
+        android:key="@string/use_ratio"
+        android:title="@string/is_gotway_mcm_title"
+        android:summary="@string/is_gotway_mcm_description" />
+
+	<ListPreference
+		android:defaultValue="1"
+		android:enabled="true"
+		android:entries="@array/gotway_voltage"
+		android:entryValues="@array/gotway_voltage_values"
+		android:key="@string/gotway_voltage"
+		android:summary="@string/battary_voltage_description"
+		android:title="@string/battery_voltage_title" />
+
+
+</PreferenceScreen>
